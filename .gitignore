@@ -1,0 +1,27 @@
+
+# Ignore local Python cache and editor artifacts
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Ignore uploaded resume/job description files
+uploads/
+
+# Ignore random local environment and VS Code files
+.env
+.env.*
+!.env.example
+.vite/
+.DS_Store
+
+
+# Ignore the local Python virtual environment
+backend/venv/
+venv/
+.venv/
+
+# Ignore Python package metadata and caches generated locally
+*.pyc
+__pycache__/
+
