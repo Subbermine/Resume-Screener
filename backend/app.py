@@ -10,6 +10,7 @@ from services.scoring import skill_score
 from services.experience import experience_score
 from services.education import education_score
 from services.remarks import generate_remark
+from services.ensemble import boosted_ensemble_score
 
 app = FastAPI()
 
@@ -72,6 +73,13 @@ async def analyze_resume(
 0.15 * education
     )
 
+    ensemble_score = boosted_ensemble_score(
+        bert,
+        skills,
+        experience,
+        education,
+    )
+
     remark = generate_remark(
     final_score,
     resume_skills.intersection(job_skills),
@@ -86,6 +94,7 @@ async def analyze_resume(
     "experience_score": round(experience, 2),
     "education_score": round(education, 2),
     "ats_score": round(final_score, 2),
+    "ensemble_score": round(ensemble_score, 2),
 
     "matched_skills": list(resume_skills.intersection(job_skills)),
     "missing_skills": list(job_skills - resume_skills),

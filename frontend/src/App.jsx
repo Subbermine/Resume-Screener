@@ -149,6 +149,10 @@ function App() {
               <h3>Semantic Match</h3>
               <div className="value">{results.bert_similarity}%</div>
             </div>
+            <div className="score-card">
+              <h3>Ensemble Score</h3>
+              <div className="value">{results.ensemble_score}%</div>
+            </div>
           </div>
 
           <div className="remark-card">
