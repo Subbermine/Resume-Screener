@@ -134,6 +134,10 @@ function App() {
           <div className="results-header">
             <h2>Analysis Results</h2>
             <p style={{ color: 'var(--text-muted)', marginTop: '5px' }}>{results.decision}</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85em' }}>
+              Model: {results.model_version === 'ensemble_v1' ? 'Learned ensemble v1' : 'Heuristic fallback'}
+              {results.ml_competence ? ` · Competence: ${results.ml_competence}` : ''}
+            </p>
           </div>
 
           <div className="score-grid">
@@ -141,6 +145,12 @@ function App() {
               <h3>ATS Score</h3>
               <div className="value">{results.ats_score}%</div>
             </div>
+            {results.ml_score != null && (
+              <div className="score-card primary">
+                <h3>ML Score ({Math.round(results.ml_confidence * 100)}% conf.)</h3>
+                <div className="value">{results.ml_score}%</div>
+              </div>
+            )}
             <div className="score-card">
               <h3>Skill Match</h3>
               <div className="value">{results.skill_score}%</div>
@@ -154,6 +164,19 @@ function App() {
               <div className="value">{results.ensemble_score}%</div>
             </div>
           </div>
+
+          {results.top_features?.length > 0 && (
+            <div className="remark-card">
+              <h3>Why this score?</h3>
+              <div className="skill-badges">
+                {results.top_features.map(f => (
+                  <span key={f.feature} className={`badge ${f.direction === 'positive' ? 'success' : 'error'}`}>
+                    {f.direction === 'positive' ? '+' : '−'} {f.feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="remark-card">
             <h3>Recommendation</h3>

@@ -1,0 +1,24 @@
+{
+  "n_resumes": 800,
+  "n_jds": 200,
+  "n_pairs": 3200,
+  "seed": 42,
+  "match_rate_overall": 0.5675,
+  "match_rate_by_split": {
+    "train": 0.5545,
+    "val": 0.6062,
+    "test": 0.5896
+  },
+  "competence_dist": {
+    "Average": 1260,
+    "Good": 763,
+    "Weak": 762,
+    "Strong": 415
+  },
+  "split_counts": {
+    "train": 2240,
+    "test": 480,
+    "val": 480
+  },
+  "note": "Weak/bootstrapping labels. bert_proxy is synthetic; Phase 2 replaces with real SBERT cosine."
+}

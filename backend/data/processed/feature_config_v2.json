@@ -1,0 +1,43 @@
+{
+  "model_name": "all-MiniLM-L6-v2",
+  "sbert_available": true,
+  "tfidf": {
+    "max_features": 10000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "sublinear_tf": true,
+    "fit_on": "train_split_only"
+  },
+  "idf": {
+    "fit_on": "train_resume_skills",
+    "n_terms": 40
+  },
+  "features": [
+    "skill_overlap",
+    "n_res_skills",
+    "n_jd_skills",
+    "matched",
+    "missing",
+    "missing_ratio",
+    "skill_idf_overlap",
+    "exp_score_norm",
+    "exp_gap_norm",
+    "exp_meets",
+    "edu_match",
+    "edu_diff",
+    "log_len_res",
+    "log_len_jd",
+    "len_ratio",
+    "same_track",
+    "tfidf_cosine",
+    "sbert_cosine",
+    "emb_diff_mean",
+    "emb_diff_std"
+  ],
+  "reference_only": [
+    "bert_proxy",
+    "ats_proxy"
+  ]
+}

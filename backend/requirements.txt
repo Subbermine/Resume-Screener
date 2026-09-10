@@ -7,4 +7,7 @@ python-docx
 scikit-learn
 numpy
 pandas
+pyarrow
 python-multipart
+accelerate  # Phase 3 M4 transformer fine-tuning (train_transformer.py)
+fpdf2  # tests only (PDF fixtures in tests/test_api.py)

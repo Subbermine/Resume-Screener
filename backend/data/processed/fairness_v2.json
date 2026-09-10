@@ -1,0 +1,108 @@
+{
+  "source": {
+    "kaggle": {
+      "n": 1125,
+      "selection_rate": 0.0027,
+      "f1": 0.8,
+      "auc": 1.0,
+      "flag": true
+    },
+    "synthetic": {
+      "n": 472,
+      "selection_rate": 0.5636,
+      "f1": 0.9887,
+      "auc": 0.9995,
+      "flag": false
+    }
+  },
+  "edu_req": {
+    "bachelor": {
+      "n": 728,
+      "selection_rate": 0.1841,
+      "f1": 0.9736,
+      "auc": 0.9997,
+      "flag": false
+    },
+    "master": {
+      "n": 451,
+      "selection_rate": 0.153,
+      "f1": 1.0,
+      "auc": 1.0,
+      "flag": false
+    },
+    "none": {
+      "n": 275,
+      "selection_rate": 0.1891,
+      "f1": 1.0,
+      "auc": 1.0,
+      "flag": false
+    },
+    "phd": {
+      "n": 143,
+      "selection_rate": 0.0979,
+      "f1": 1.0,
+      "auc": 1.0,
+      "flag": true
+    }
+  },
+  "exp_band": {
+    "entry(<=1y)": {
+      "n": 356,
+      "selection_rate": 0.191,
+      "f1": 0.9853,
+      "auc": 0.9999,
+      "flag": false
+    },
+    "mid(2-3y)": {
+      "n": 849,
+      "selection_rate": 0.1578,
+      "f1": 0.9925,
+      "auc": 1.0,
+      "flag": false
+    },
+    "senior(4y+)": {
+      "n": 392,
+      "selection_rate": 0.1709,
+      "f1": 0.9774,
+      "auc": 0.9998,
+      "flag": false
+    }
+  },
+  "track_jd": {
+    "backend": {
+      "n": 328,
+      "selection_rate": 0.1677,
+      "f1": 0.9815,
+      "auc": 1.0,
+      "flag": true
+    },
+    "data_ml": {
+      "n": 334,
+      "selection_rate": 0.1527,
+      "f1": 0.9804,
+      "auc": 0.9997,
+      "flag": true
+    },
+    "devops": {
+      "n": 329,
+      "selection_rate": 0.2188,
+      "f1": 1.0,
+      "auc": 1.0,
+      "flag": false
+    },
+    "frontend": {
+      "n": 311,
+      "selection_rate": 0.1254,
+      "f1": 0.987,
+      "auc": 1.0,
+      "flag": true
+    },
+    "fullstack": {
+      "n": 295,
+      "selection_rate": 0.1763,
+      "f1": 0.9808,
+      "auc": 0.9998,
+      "flag": false
+    }
+  }
+}

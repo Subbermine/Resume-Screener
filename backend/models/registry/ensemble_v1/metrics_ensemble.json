@@ -1,0 +1,54 @@
+{
+  "version": "2",
+  "meta_features": [
+    "m1",
+    "m2",
+    "m3",
+    "sbert",
+    "skill_overlap"
+  ],
+  "tuned_threshold_val_f1": 0.5,
+  "models": {
+    "stack_uncalibrated": {
+      "acc": 0.995,
+      "f1": 0.9851,
+      "roc_auc": 0.9999,
+      "pr_auc": 0.9996,
+      "ece": 0.007,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    },
+    "stack_calibrated": {
+      "acc": 0.9956,
+      "f1": 0.9869,
+      "roc_auc": 0.9999,
+      "pr_auc": 0.9996,
+      "ece": 0.0151,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    },
+    "stack_calibrated_t0.5": {
+      "acc": 0.9956,
+      "f1": 0.9869,
+      "roc_auc": 0.9999,
+      "pr_auc": 0.9996,
+      "ece": 0.0151,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    },
+    "calibration_gain_ece": -0.0081,
+    "competence_head": {
+      "acc": 0.9869,
+      "macro_f1": 0.9643,
+      "majority_acc": 0.7583
+    }
+  },
+  "ablation_auc": {
+    "full_m1": 0.9999,
+    "without_skills": 0.9925,
+    "without_semantic": 0.9998,
+    "without_experience": 0.9923,
+    "without_education": 0.9969
+  },
+  "elapsed_s": 14.7
+}

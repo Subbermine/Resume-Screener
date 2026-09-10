@@ -1,0 +1,30 @@
+{
+  "n": 10649,
+  "sbert_available": true,
+  "model": "all-MiniLM-L6-v2",
+  "means": {
+    "skill_overlap": 0.1521,
+    "n_res_skills": 2.7002,
+    "n_jd_skills": 5.367,
+    "matched": 0.8164,
+    "missing": 4.5506,
+    "missing_ratio": 0.8479,
+    "skill_idf_overlap": 0.1455,
+    "exp_score_norm": 0.4937,
+    "exp_gap_norm": 0.0816,
+    "exp_meets": 0.4528,
+    "edu_match": 0.7202,
+    "edu_diff": 0.0972,
+    "log_len_res": 5.7217,
+    "log_len_jd": 3.4673,
+    "len_ratio": 0.6538,
+    "same_track": 0.2419,
+    "tfidf_cosine": 4.0585,
+    "sbert_cosine": 34.2979,
+    "emb_diff_mean": 0.0456,
+    "emb_diff_std": 0.0348
+  },
+  "sbert_vs_proxy_corr": 0.783,
+  "tfidf_vs_sbert_corr": 0.7776,
+  "match_rate": 0.1748
+}

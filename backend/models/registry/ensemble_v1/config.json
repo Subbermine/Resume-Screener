@@ -1,0 +1,28 @@
+{
+  "model_version": "ensemble_v1",
+  "trained_on": "features_v2",
+  "seed": 42,
+  "n_folds": 5,
+  "meta_features": [
+    "m1",
+    "m2",
+    "m3",
+    "sbert",
+    "skill_overlap"
+  ],
+  "tuned_threshold": 0.5,
+  "files": [
+    "m1_logreg.pkl",
+    "hgb_m2.pkl",
+    "mlp_m3.pkl",
+    "scaler_m3.pkl",
+    "meta_logreg.pkl",
+    "calibrator.pkl",
+    "competence_head.pkl"
+  ],
+  "targets": {
+    "match": "label_match>=threshold",
+    "competence": "competence_level 0-3"
+  },
+  "note": "Weak-label training; recalibrate on human gold before production use."
+}

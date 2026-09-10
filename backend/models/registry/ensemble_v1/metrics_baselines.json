@@ -1,0 +1,45 @@
+{
+  "version": "2",
+  "n_train": 7446,
+  "n_test": 1597,
+  "models": {
+    "m1_logreg": {
+      "acc": 0.9912,
+      "f1": 0.9743,
+      "roc_auc": 0.9999,
+      "pr_auc": 0.9994,
+      "ece": 0.0133,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    },
+    "m2_hgb": {
+      "acc": 0.9969,
+      "f1": 0.9906,
+      "roc_auc": 0.9998,
+      "pr_auc": 0.9989,
+      "ece": 0.0043,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    },
+    "m3_mlp_emb": {
+      "acc": 0.9487,
+      "f1": 0.8417,
+      "roc_auc": 0.9845,
+      "pr_auc": 0.9211,
+      "ece": 0.0179,
+      "p_at_5": 0.4113,
+      "p_at_5_groups": 53,
+      "emb_dim": 1152
+    },
+    "heuristic_ats": {
+      "acc": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "ece": 0.3048,
+      "p_at_5": 0.4189,
+      "p_at_5_groups": 53
+    }
+  },
+  "elapsed_s": 5.7
+}
