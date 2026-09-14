@@ -1,4 +1,4 @@
-
+paper.tex
 # Ignore local Python cache and editor artifacts
 __pycache__/
 *.py[cod]
