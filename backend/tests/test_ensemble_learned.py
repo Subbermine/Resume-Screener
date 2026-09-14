@@ -41,6 +41,36 @@ class RegistryTests(unittest.TestCase):
         self.assertTrue(0.2 <= cfg["tuned_threshold"] <= 0.8)
 
 
+class TransformerArtifactExportTests(unittest.TestCase):
+    def test_save_transformer_artifacts_exports_model_tokenizer_and_metrics(self):
+        import json
+        import os
+        import tempfile
+
+        from training.train_transformer import save_transformer_artifacts
+
+        class DummyModel:
+            def save_pretrained(self, out_dir):
+                os.makedirs(out_dir, exist_ok=True)
+                with open(os.path.join(out_dir, "model.txt"), "w", encoding="utf-8") as f:
+                    f.write("model")
+
+        class DummyTokenizer:
+            def save_pretrained(self, out_dir):
+                os.makedirs(out_dir, exist_ok=True)
+                with open(os.path.join(out_dir, "tokenizer.txt"), "w", encoding="utf-8") as f:
+                    f.write("tokenizer")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            save_transformer_artifacts(DummyModel(), DummyTokenizer(), tmp, {"f1": 0.9})
+            self.assertTrue(os.path.exists(os.path.join(tmp, "model.txt")))
+            self.assertTrue(os.path.exists(os.path.join(tmp, "tokenizer.txt")))
+            self.assertTrue(os.path.exists(os.path.join(tmp, "metrics.json")))
+            with open(os.path.join(tmp, "metrics.json"), encoding="utf-8") as f:
+                data = json.load(f)
+            self.assertEqual(data["f1"], 0.9)
+
+
 class LearnedScorerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

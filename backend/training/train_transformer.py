@@ -16,6 +16,7 @@ Requires: transformers, accelerate, torch with CUDA for --fp16
   (pip install torch --index-url https://download.pytorch.org/whl/cu126).
 """
 import argparse
+import json
 import os
 import sys
 
@@ -47,6 +48,21 @@ def build_dataset(pairs_df, tokenizer, max_length):
                     "labels": torch.tensor(int(self.y[i]))}
 
     return PairDS(pairs_df)
+
+
+def save_transformer_artifacts(model, tokenizer, out_dir, metrics):
+    """Persist the transformer task artifacts in a registry-friendly directory.
+
+    The trainer originally saved only the model weights onto disk and never
+    emitted the accompanying tokenizer and a machine-readable metrics report.
+    This helper completes M4's output contract by writing the usual pair
+    of pretrained object exports and a small metrics payload.
+    """
+    os.makedirs(out_dir, exist_ok=True)
+    model.save_pretrained(out_dir)
+    tokenizer.save_pretrained(out_dir)
+    with open(os.path.join(out_dir, "metrics.json"), "w", encoding="utf-8") as f:
+        json.dump(metrics, f, indent=2, sort_keys=True)
 
 
 def main():
@@ -106,14 +122,14 @@ def main():
         return {"accuracy": accuracy_score(p.label_ids, pred),
                 "f1": f1_score(p.label_ids, pred)}
 
-    res = Trainer(model=model, args=targs, train_dataset=train_ds,
-                  eval_dataset=eval_ds, compute_metrics=metrics).train()
+    trainer = Trainer(model=model, args=targs, train_dataset=train_ds,
+                       eval_dataset=eval_ds, compute_metrics=metrics)
+    res = trainer.train()
     print("train_loss:", round(res.training_loss, 4))
-    print("eval:", Trainer(model=model, args=targs, train_dataset=train_ds,
-                           eval_dataset=eval_ds, compute_metrics=metrics).evaluate())
+    eval_res = trainer.evaluate()
+    print("eval:", eval_res)
     if args.run_full:
-        Trainer(model=model, args=targs, train_dataset=train_ds,
-                eval_dataset=eval_ds).save_model(out_dir)
+        save_transformer_artifacts(model, tok, out_dir, eval_res)
         print("saved ->", out_dir)
     else:
         print("smoke OK (no artifacts kept; use --run_full on GPU to keep M4)")
